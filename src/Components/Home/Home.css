@@ -1,5 +1,5 @@
 .container {
-    display: flex;
+    display: block;
   }
   
   .left-div {
@@ -11,6 +11,11 @@
   .right-div {
     flex: 1;
     background-color: #ccc;
+    padding: 20px;
+  }
+
+  .third-div {
+    background-color: aqua;
     padding: 20px;
   }
   

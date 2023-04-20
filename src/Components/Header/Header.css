@@ -35,3 +35,11 @@ ul {
     font-weight: bold;
     font-size: 18px;
 }
+
+#transparent-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-weight: bolder;
+    font-size: large;
+}
