@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
 import './Home.css'
 import pfPic from './me_justin_cat.jpg'
-
 
 
 function Home() {
   const [buttonVal, setButtonVal] = useState(0)
 
   function buttonClick() {
-    
     setButtonVal(buttonVal+1)
   }
 
   var name = "Shawn"
 
     return (
-    <div>
-      <Header name={name}/>
-      <div className='container'>
+      <div className='main-container'>
         <div className='left-div' id='left-div'>
           <h2>About Me</h2>
           <p><strong>Name:</strong> Shawn Han</p>
@@ -40,7 +35,6 @@ function Home() {
             <button onClick={buttonClick}>Increment</button>
         </div>
       </div>
-    </div>
     )
 }
 

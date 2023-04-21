@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Header.css'
+import {Link, useNavigate} from 'react-router-dom'
 
 function Header({name}) {
+
+  let navigate = useNavigate()
 
   function scrollToAbout(e) {
     e.preventDefault()
@@ -18,23 +21,16 @@ function Header({name}) {
       behavior: 'smooth'
     })
   }
-
-  function scrollToThird(e) {
-    e.preventDefault()
-    window.scrollTo({
-      top: document.querySelector('#third-div').offsetTop,
-      behavior: 'smooth'
-    })
-  }
   
   return (
     <header className='header'>
       <h1 className='header-title'>{name}'s Homepage</h1>
       <nav className='header-nav'>
         <ul>
-          <li><button id='transparent-button' onClick={(e) => {scrollToThird(e)}}>Home</button></li>
-          <li><button id='transparent-button' onClick={(e) => {scrollToAbout(e)}}>About</button></li>
-          <li><button id='transparent-button' onClick={(e) => {scrollToContact(e)}}>Contact</button></li>
+          <li><Link id='transparent-button' to={"/"}>Home</Link></li>
+          <li><Link id='transparent-button' onClick={(e) => {scrollToAbout(e)}}>About</Link></li>
+          <li><Link id='transparent-button' onClick={(e) => {scrollToContact(e)}}>Contact</Link></li>
+          <li><Link id='transparent-button' to={"/login"}>Login</Link></li>
         </ul>
       </nav>
     </header>
