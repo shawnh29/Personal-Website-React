@@ -18,4 +18,9 @@
     background-color: rgb(255, 170, 90);
     padding: 20px;
   }
+
+  button {
+    padding: 0.5em;
+    margin-right: 2em;
+  }
   

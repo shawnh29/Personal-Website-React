@@ -4,13 +4,20 @@ import pfPic from './me_justin_cat.jpg'
 
 
 function Home() {
-  const [buttonVal, setButtonVal] = useState(0)
+  const initialVal = () => Number(localStorage.getItem("current_val")) || 0
+  const [buttonVal, setButtonVal] = useState(initialVal)
 
   function buttonClick() {
     setButtonVal(buttonVal+1)
   }
 
-  var name = "Shawn"
+  function resetVal() {
+    setButtonVal(0)
+  }
+
+  useEffect(() => {
+    localStorage.setItem("current_val", JSON.stringify(buttonVal))
+  }, [buttonVal])
 
     return (
       <div className='main-container'>
@@ -33,6 +40,7 @@ function Home() {
           <h3>Cookie Clicker Game :)</h3>
             <p>{buttonVal}</p>
             <button onClick={buttonClick}>Increment</button>
+            <button onClick={resetVal}>Reset</button>
         </div>
       </div>
     )

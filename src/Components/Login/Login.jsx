@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import './Login.css'
-import Home from "../Home/Home";
+import {  useNavigate } from "react-router-dom";
 
 function Login() {
+
+    let navigate = useNavigate()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,22 +22,23 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log("Username: ", username,  " Password: ", password)
+        navigate("/")
     }
 
     return (
         <div className="container">
-            <h1>Login Form</h1>
-            <form onSubmit={handleSubmit}>
-                <label> Username:
-                    <input type="text" value={username} onChange={handleUsername}/>
-                </label>
-                <br />
-                <label> Password: 
-                    <input type="password" value={password} onChange={handlePassword} />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
-            </form>
+            <div className="form-div">
+                <h1>Login Form</h1>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="username"> Username:</label>
+                    <input type="text" placeholder="Username" name="username" onChange={handleUsername}/>
+                    <br />
+                    <label htmlFor="password"> Password:</label>
+                    <input type="password" placeholder="Password" name="password" onChange={handlePassword} />
+                    <br />
+                    <button type="submit" className="submit-button">Submit</button>
+                </form>
+            </div>
         </div>
     )
 }
