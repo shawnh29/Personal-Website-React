@@ -7,6 +7,9 @@ function Home() {
   const initialVal = () => Number(localStorage.getItem("current_val")) || 0
   const [buttonVal, setButtonVal] = useState(initialVal)
 
+  const [fact, setFact] = useState("")
+  const [moreInfoOpen, setMoreInfoOpen] = useState(false)
+
   function buttonClick() {
     setButtonVal(buttonVal+1)
   }
@@ -18,6 +21,24 @@ function Home() {
   useEffect(() => {
     localStorage.setItem("current_val", JSON.stringify(buttonVal))
   }, [buttonVal])
+
+  useEffect(() => {
+    getFact()
+  }, [])
+
+  function getFact() {
+    console.log("getting fact..")
+    fetch("https://api.chucknorris.io/jokes/random")
+      .then(res => res.json())
+      .then(data => {
+        setFact(data.value)
+      })
+  }
+
+  function showInfo() {
+    console.log("showing API info")
+    setMoreInfoOpen(!moreInfoOpen)
+  }
 
     return (
       <div className='main-container'>
@@ -41,6 +62,15 @@ function Home() {
             <p>{buttonVal}</p>
             <button onClick={buttonClick}>Increment</button>
             <button onClick={resetVal}>Reset</button>
+        </div>
+        <div className='random-fact-div' id='random-fact-div'>
+          <div className='fact-header-div'>
+            <h3 className='fact-header'>Random Fact Generator!</h3>
+            <button className='more-info-button' onClick={showInfo}>More Info +</button>
+          </div>
+          <button onClick={getFact}>Generate Fact</button>
+          <p className='fact'>{fact}</p>
+          {(moreInfoOpen) ? (<div>This section makes use of the <a href="http://chucknorris.io">chucknorris.io</a> random fact generator API!</div>) : (null)}
         </div>
       </div>
     )

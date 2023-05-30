@@ -19,6 +19,27 @@
     padding: 20px;
   }
 
+  .random-fact-div {
+    padding: 20px;
+    background-color: rgb(252, 73, 73);
+  }
+
+  .more-info-button {
+    display: inline;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .fact-header {
+    display: inline;
+    padding-right: 1.75em;
+  }
+
+  .fact {
+    font-family: cursive;
+  }
+
   button {
     padding: 0.5em;
     margin-right: 2em;
